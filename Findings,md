@@ -1,0 +1,138 @@
+# Slendytubbies Community Online
+## Findings
+
+Fecha: 7 de junio de 2026
+
+---
+
+# Estado del proyecto
+
+Objetivo:
+Reemplazar la infraestructura de Online Servers para que el multijugador vuelva a funcionar sin depender de TubbyCommunity.
+
+---
+
+# Información descubierta
+
+## DLL
+
+Nombre:
+OnlineServers.dll
+
+Versión:
+1.7
+
+Autor:
+Shadow Master
+
+Framework:
+.NET Framework 4.8
+
+Loader:
+MelonLoader
+
+Juego:
+Slendytubbies 3
+
+---
+
+# Networking
+
+El mod NO implementa un servidor propio.
+
+Utiliza Photon Cloud.
+
+El DLL únicamente descarga información desde un servidor web y entrega el App ID a Photon.
+
+---
+
+# URLs encontradas
+
+Base:
+
+https://slendytubbies3-rbs.vercel.app/
+
+Archivos:
+
+- RBS.txt
+- St3CurrentVersion.txt
+- photonid.txt
+- Credits.txt
+- blacklist.txt
+
+Además descarga:
+
+- música
+- imágenes
+
+---
+
+# Gate de versión
+
+Archivo utilizado:
+
+RBS.txt
+
+Versión actual del DLL:
+
+1.7
+
+Si RBS.txt contiene otra versión:
+
+→ El botón Online desaparece
+→ Se muestra "Please update Online Servers..."
+
+---
+
+# Photon
+
+El App ID NO está dentro del DLL.
+
+Se descarga desde:
+
+photonid.txt
+
+Después se entrega al sistema Photon del juego.
+
+---
+
+# Blacklist
+
+Se descarga:
+
+blacklist.txt
+
+Luego se guarda en:
+
+Mods/Content/
+
+Cuando un jugador baneado entra:
+
+PhotonNetwork.CloseConnection()
+
+---
+
+# Lo que NO hace el DLL
+
+No contiene:
+
+- ConnectUsingSettings()
+- Servidor maestro
+- Base de datos
+- Sistema de cuentas
+
+Todo eso pertenece a Photon.
+
+---
+
+# Próximos pasos
+
+[ ] Confirmar cada URL en dnSpy.
+
+[ ] Crear una Photon App propia.
+
+[ ] Crear hosting sustituto.
+
+[ ] Cambiar la URL del DLL.
+
+[ ] Probar conexión.
